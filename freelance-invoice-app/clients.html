@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clients — فریلنس یار</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand" aria-label="FreelanceHub home">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+      فریلنس یار
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" role="list">
+      <li><a href="index.html" class="nav-link">Dashboard</a></li>
+      <li><a href="clients.html" class="nav-link">Clients</a></li>
+      <li><a href="invoices.html" class="nav-link">Invoices</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Clients</h1>
+      <p class="page-subtitle">Manage your client roster</p>
+    </div>
+    <div class="page-grid">
+      <aside>
+        <div class="form-card">
+          <h2 id="form-heading">Add New Client</h2>
+          <form id="client-form" novalidate>
+            <div class="form-group">
+              <label for="client-name">Name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="client-name" name="client-name" class="form-control" placeholder="Zahra Ahmadi" autocomplete="name" required>
+              <div class="field-error" role="alert"></div>
+            </div>
+            <div class="form-group">
+              <label for="client-email">Email <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="client-email" name="client-email" class="form-control" placeholder="zahra08ahmadi@gmail.com" autocomplete="email" required>
+              <div class="field-error" role="alert"></div>
+            </div>
+            <div class="form-group">
+              <label for="client-company">Company</label>
+              <input type="text" id="client-company" name="client-company" class="form-control" placeholder="Freelance Inc." autocomplete="organization">
+              <div class="field-error" role="alert"></div>
+            </div>
+            <div class="form-group">
+              <label for="client-notes">Notes</label>
+              <textarea id="client-notes" name="client-notes" class="form-control" placeholder="Any additional notes…" rows="3"></textarea>
+              <div class="field-error" role="alert"></div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-full">Add Client</button>
+              <button type="button" id="cancel-edit" class="btn btn-secondary btn-full" style="display:none">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </aside>
+      <div>
+        <div id="clients-loading" class="loading-bar" role="status" aria-live="polite">
+          <div class="spinner" aria-hidden="true"></div>
+          Seeding initial clients from RandomUser API…
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <h2>All Clients <span class="count-badge" id="client-count" aria-live="polite">0</span></h2>
+          </div>
+          <div class="table-wrap">
+            <table aria-label="Clients list">
+              <thead>
+                <tr>
+                  <th data-sort="name"    scope="col">Name</th>
+                  <th data-sort="email"   scope="col">Email</th>
+                  <th data-sort="company" scope="col">Company</th>
+                  <th scope="col">Notes</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clients-tbody">
+                <tr><td colspan="5" class="empty-state"><div><p>Loading…</p></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="toast" class="toast toast-success" role="status" aria-live="polite"></div>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/clients.js"></script>
+</body>
+</html>
